@@ -12,6 +12,7 @@ import android.widget.Toast;
 
 import br.edu.vinnicyus.espanglish.Controller.CriteriosActivity;
 import br.edu.vinnicyus.espanglish.Controller.LoginValidator;
+import br.edu.vinnicyus.espanglish.lib.BancoDeDados;
 
 /**
  * A login screen that offers login via email/password.
@@ -26,6 +27,7 @@ public class LoginActivity extends AppCompatActivity{
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
@@ -55,9 +57,13 @@ public class LoginActivity extends AppCompatActivity{
                 String senha = password.getText().toString();
 
                 LoginValidator isValid = new LoginValidator();
+                isValid.setLogin(login);
+                isValid.setSenha(senha);
+                isValid.setEditLogin(nome);
+                isValid.setEditSenha(password);
                 isValid.validarCampos(login,senha);
                 {
-                    if(isValid.isvalid)
+                    if(isValid.isvalid())
                     {
                         SharedPreferences.Editor editor = preferences.edit();
                         editor.putString("nome", login);
