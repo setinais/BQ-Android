@@ -4,13 +4,7 @@
     <string name="prompt_password">Senha</string>
     <string name="action_sign_in">Entrar</string>
     <string name="action_sign_in_short">Entrar</string>
-    <string name="error_invalid_email">Este usuario é invalido!</string>
-    <string name="error_invalid_password">Esta senha é invalida!</string>
-    <string name="error_incorrect_password">Está senha é incorreta!</string>
-    <string name="error_field_required">Campo obrigarorio</string>
-    <string name="permission_rationale">"Contacts permissions are needed for providing email
-        completions."
-    </string>
+
     <string name="title_activity_login">Logar</string>
     <string name="title_activity_home">HomeActivity</string>
 </resources>

@@ -8,26 +8,36 @@
     <uses-permission android:name="android.permission.READ_CONTACTS" />
 
     <application
+        android:name=".lib.MyApplication"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
-        android:name = "com.activeandroid.app.Application">
-        <Meta-data android:name = "AA_DB_NAME"  android:value = "espanglish.db" />
-        <Meta-data android:name = "AA_DB_VERSION"  android:value = "1" />
-        <Meta-data
-            android:name = "AA_MODELS"
-            android:value = "br.edu.vinnicyus.espanglish.Model" />
-        <activity android:name=".LoginActivity">
+        >
+
+        <meta-data
+            android:name="AA_DB_NAME"
+            android:value="espanglish.db" />
+        <meta-data
+            android:name="AA_DB_VERSION"
+            android:value="1" />
+        <meta-data
+            android:name="AA_MODELS"
+            android:value="                         br.edu.vinnicyus.espanglish.Model.Jurado,                         br.edu.vinnicyus.espanglish.Model.ConfigsApp,                         br.edu.vinnicyus.espanglish.Model.Pais,                         br.edu.vinnicyus.espanglish.Model.Palco,                         br.edu.vinnicyus.espanglish.Model.Barraca                             " />
+
+        <activity android:name=".LoginActivity" android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".Controller.CriteriosActivity" />
-        <activity android:name=".Controller.HomeActivity"></activity>
+        <activity android:name=".View.CriteriosActivity" android:parentActivityName=".View.HomeActivity"/>
+        <activity android:name=".View.HomeActivity" />
+        <activity android:name=".View.BarracaActivity" android:parentActivityName=".View.HomeActivity"/>
+        <activity android:name=".View.PalcoActivity" android:parentActivityName=".View.HomeActivity"/>
     </application>
 
 </manifest>

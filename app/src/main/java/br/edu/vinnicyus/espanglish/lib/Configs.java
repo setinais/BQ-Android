@@ -8,11 +8,19 @@ import android.app.LauncherActivity;
 
 public class Configs {
 
-    private String[][] jurados =
+    public String[][] jurados =
             {
-                    {"Vinnicyus","02286373175"},
-                    {"Mauricio","35001941172"}
+                    {"Vinnicyus","02286373175","Espanhol"},
+                    {"Mauricio","35001941172","Ingles"}
             };
-
-
+    public String[][] paises =
+            {
+                    {"Espanha","espanha32","Espanhol"},
+                    {"Estados Unidos","usa32","Espanhol"}
+            };
+    public static Configs getConfigs()
+    {
+        Configs c = new Configs();
+        return c;
+    }
 }

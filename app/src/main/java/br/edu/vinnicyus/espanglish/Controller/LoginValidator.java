@@ -3,6 +3,8 @@ package br.edu.vinnicyus.espanglish.Controller;
 import android.widget.Button;
 import android.widget.EditText;
 
+import java.util.List;
+
 import br.edu.vinnicyus.espanglish.Model.Jurado;
 
 /**
@@ -69,18 +71,36 @@ public class LoginValidator {
 
     public void validarCampos(String login, String senha)
     {
-        boolean result = true;
+
+        boolean result = false;
+        Jurado j = Jurado.getUsuario(login);
         if(login == null || "".equals(login))
         {
             this.editLogin.setError("Campo Obrigatorio!");
-            result = false;
+            this.editLogin.requestFocus();
         }
         if(senha == null || "".equals(senha))
         {
             this.editSenha.setError("Campo Obrigatorio!");
-            result = false;
+            this.editSenha.requestFocus();
+        }
+        if (j == null)
+        {
+            this.editLogin.setError("Usuario esta Incorreto!");
+            this.editSenha.requestFocus();
+        }
+        else
+        {
+            if (senha.equals(j.getSenha()))
+            {
+                result = true;
+            }
+            else
+            {
+                this.editSenha.setError("Senha esta incorreta!");
+                this.editSenha.requestFocus();
+            }
         }
         this.isvalid = result;
     }
-
 }
