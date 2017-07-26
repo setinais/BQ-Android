@@ -9,7 +9,7 @@
 
     <ScrollView
         android:id="@+id/scrool"
-        android:layout_width="585dp"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         tools:layout_editor_absoluteY="5dp"
         tools:layout_editor_absoluteX="8dp">
@@ -17,12 +17,22 @@
 
 
         <LinearLayout
-            android:layout_width="585dp"
-            android:layout_height="810dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
             android:orientation="vertical"
             tools:layout_editor_absoluteX="10dp"
             tools:layout_editor_absoluteY="9dp">
 
+            <TextView
+                android:id="@+id/textviewPais"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="50dp"
+                android:layout_marginTop="20dp"
+                android:gravity="center_horizontal"
+                android:textStyle="bold"
+                android:textSize="30dp"
+                android:text="Palco -> Espanha" />
             <SeekBar
                 android:id="@+id/seekBarDesfile"
                 style="@style/Widget.AppCompat.SeekBar.Discrete"
@@ -38,7 +48,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Desfile de traje Tipico:  ------------   "
-                    android:textSize="24sp"
+                    android:textSize="@dimen/size_info_radios"
                     android:layout_gravity="left"
                     android:textStyle="bold" />
                 <TextView
@@ -46,7 +56,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="0/10"
-                    android:textSize="24sp"
+                    android:textSize="@dimen/size_info_radios"
                     android:textStyle="bold" />
             </LinearLayout>
             <SeekBar
@@ -55,7 +65,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:max="10"
-                android:progress="0" />
+                android:progress="0"
+                android:layout_marginTop="@dimen/activity_entre_radios"/>
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -64,16 +75,15 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Fluência na Língua Estrangeira: ---   "
-                    android:textSize="24sp"
+                    android:textSize="@dimen/size_info_radios"
                     android:layout_gravity="left"
                     android:textStyle="bold" />
                 <TextView
                     android:id="@+id/countFluencia"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-
                     android:text="0/10"
-                    android:textSize="24sp"
+                    android:textSize="@dimen/size_info_radios"
                     android:textStyle="bold" />
             </LinearLayout>
             <SeekBar
@@ -82,7 +92,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:max="10"
-                android:progress="0" />
+                android:progress="0"
+                android:layout_marginTop="@dimen/activity_entre_radios"/>
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -91,7 +102,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Presença de palco:  -----------------  "
-                    android:textSize="24sp"
+                    android:textSize="@dimen/size_info_radios"
                     android:layout_gravity="left"
                     android:textStyle="bold" />
                 <TextView
@@ -100,7 +111,7 @@
                     android:layout_height="wrap_content"
 
                     android:text="0/10"
-                    android:textSize="24sp"
+                    android:textSize="@dimen/size_info_radios"
                     android:textStyle="bold" />
             </LinearLayout>
             <SeekBar
@@ -109,7 +120,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:max="10"
-                android:progress="0" />
+                android:progress="0"
+                android:layout_marginTop="@dimen/activity_entre_radios"/>
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -118,7 +130,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Qualidade dos slides:  --------------   "
-                    android:textSize="24sp"
+                    android:textSize="@dimen/size_info_radios"
                     android:layout_gravity="left"
                     android:textStyle="bold" />
 
@@ -128,7 +140,7 @@
                     android:layout_height="wrap_content"
 
                     android:text="0/10"
-                    android:textSize="24sp"
+                    android:textSize="@dimen/size_info_radios"
                     android:textStyle="bold" />
             </LinearLayout>
             <SeekBar
@@ -137,7 +149,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:max="10"
-                android:progress="0" />
+                android:progress="0"
+                android:layout_marginTop="@dimen/activity_entre_radios"/>
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -146,16 +159,15 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Apresentação cultural:  -------------  "
-                    android:textSize="24sp"
+                    android:textSize="@dimen/size_info_radios"
                     android:layout_gravity="left"
                     android:textStyle="bold" />
                 <TextView
                     android:id="@+id/countApresentacao"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-
                     android:text="0/10"
-                    android:textSize="24sp"
+                    android:textSize="@dimen/size_info_radios"
                     android:textStyle="bold" />
             </LinearLayout>
             <SeekBar
@@ -164,7 +176,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:max="10"
-                android:progress="0" />
+                android:progress="0"
+                android:layout_marginTop="@dimen/activity_entre_radios"/>
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -173,23 +186,23 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Uso do tempo:  ----------------------   "
-                    android:textSize="24sp"
+                    android:textSize="@dimen/size_info_radios"
                     android:layout_gravity="left"
                     android:textStyle="bold" />
                 <TextView
                     android:id="@+id/countTempo"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-
                     android:text="0/10"
-                    android:textSize="24sp"
+                    android:textSize="@dimen/size_info_radios"
                     android:textStyle="bold" />
             </LinearLayout>
             <Button
                 android:id="@+id/btnSalvar"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Salvar" />
+                android:text="Salvar"
+                android:layout_marginTop="@dimen/activity_entre_radios"/>
         </LinearLayout>
     </ScrollView>
 </android.support.constraint.ConstraintLayout>

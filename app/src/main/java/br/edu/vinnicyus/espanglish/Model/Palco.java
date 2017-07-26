@@ -3,6 +3,7 @@ package br.edu.vinnicyus.espanglish.Model;
 import com.activeandroid.Model;
 import com.activeandroid.annotation.Column;
 import com.activeandroid.annotation.Table;
+import com.activeandroid.query.Select;
 
 /**
  * Created by Vinnicyus on 05/07/2017.
@@ -10,6 +11,8 @@ import com.activeandroid.annotation.Table;
 @Table(name= "palcos", id = "id")
 public class Palco extends Model{
 
+    @Column(name = "codigo")
+    private String codigo;
     @Column(name = "desfile_traje")
     private int desfile_traje;
     @Column(name = "fluencia_lingua")
@@ -22,6 +25,14 @@ public class Palco extends Model{
     private int apresentacao_cultural;
     @Column(name = "uso_tempo")
     private int uso_tempo;
+
+    public String getCodigo() {
+        return codigo;
+    }
+
+    public void setCodigo(String codigo) {
+        this.codigo = codigo;
+    }
 
     public int getDesfile_traje() {
         return desfile_traje;
@@ -69,5 +80,11 @@ public class Palco extends Model{
 
     public void setUso_tempo(int uso_tempo) {
         this.uso_tempo = uso_tempo;
+    }
+
+    public static Palco getVotos(String codigo)
+    {
+        Palco palco = new Select().from(Palco.class).where("codigo = ?", codigo).executeSingle();
+        return palco;
     }
 }

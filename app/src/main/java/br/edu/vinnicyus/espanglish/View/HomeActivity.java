@@ -38,6 +38,8 @@ public class HomeActivity extends AppCompatActivity {
 
     private TextView tv;
 
+    private Bundle dados;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -95,6 +97,9 @@ public class HomeActivity extends AppCompatActivity {
         {
             Toast.makeText(this, "Falha na recuperação dos dados!", Toast.LENGTH_LONG).show();
         }
+        dados = new Bundle();
+        dados.putString("jurado", j.getCpf());
+
         tv = (TextView) findViewById(R.id.text);
         btnVotar.setOnClickListener(new View.OnClickListener(){
             @Override
@@ -112,8 +117,8 @@ public class HomeActivity extends AppCompatActivity {
                     radio_selected_pais = (RadioButton) findViewById(id_p);
                     radio_selected_tipo = (RadioButton) findViewById(id_t);
 
-                    Bundle dados = new Bundle();
                     dados.putString("pais", (String) radio_selected_pais.getText());
+
                     Intent intent;
                     if(radio_selected_tipo.getText().equals("Palco"))
                     {
