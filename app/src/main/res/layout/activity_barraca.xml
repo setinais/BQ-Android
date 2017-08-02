@@ -6,4 +6,286 @@
     android:layout_height="match_parent"
     tools:context="br.edu.vinnicyus.espanglish.View.BarracaActivity">
 
+    <ScrollView
+        android:id="@+id/scrool"
+        android:layout_height="wrap_content"
+        tools:layout_editor_absoluteY="0dp"
+        tools:layout_editor_absoluteX="8dp"
+        android:layout_width="match_parent">
+
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            tools:layout_editor_absoluteX="10dp"
+            tools:layout_editor_absoluteY="9dp">
+
+            <TextView
+                android:id="@+id/textviewPais"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="50dp"
+                android:layout_marginTop="20dp"
+                android:gravity="center_horizontal"
+                android:textStyle="bold"
+                android:textSize="30dp" />
+            <SeekBar
+                android:id="@+id/seekBarRecepcao"
+                style="@style/Widget.AppCompat.SeekBar.Discrete"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:max="10"
+                android:progress="0" />
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Recepção:  ------------   "
+                    android:textSize="@dimen/size_info_radios"
+                    android:layout_gravity="left"
+                    android:textStyle="bold" />
+                <TextView
+                    android:id="@+id/countRecepcao"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="0/10"
+                    android:textSize="@dimen/size_info_radios"
+                    android:textStyle="bold" />
+            </LinearLayout>
+            <SeekBar
+                android:id="@+id/seekBarUtilizacao"
+                style="@style/Widget.AppCompat.SeekBar.Discrete"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:max="10"
+                android:progress="0"
+                android:layout_marginTop="@dimen/activity_entre_radios"/>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Utilização de materiais recicláveis: ---   "
+                    android:textSize="@dimen/size_info_radios"
+                    android:layout_gravity="left"
+                    android:textStyle="bold" />
+                <TextView
+                    android:id="@+id/countUtilizacao"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="0/10"
+                    android:textSize="@dimen/size_info_radios"
+                    android:textStyle="bold" />
+            </LinearLayout>
+            <SeekBar
+                android:id="@+id/seekBarComida"
+                style="@style/Widget.AppCompat.SeekBar.Discrete"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:max="10"
+                android:progress="0"
+                android:layout_marginTop="@dimen/activity_entre_radios"/>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Comida/s e bebidas para degustação:  -  "
+                    android:textSize="@dimen/size_info_radios"
+                    android:layout_gravity="left"
+                    android:textStyle="bold" />
+                <TextView
+                    android:id="@+id/countComida"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+
+                    android:text="0/10"
+                    android:textSize="@dimen/size_info_radios"
+                    android:textStyle="bold" />
+            </LinearLayout>
+            <SeekBar
+                android:id="@+id/seekBarFluencia"
+                style="@style/Widget.AppCompat.SeekBar.Discrete"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:max="10"
+                android:progress="0"
+                android:layout_marginTop="@dimen/activity_entre_radios"/>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Fluência na Língua estrangeira :  -------   "
+                    android:textSize="@dimen/size_info_radios"
+                    android:layout_gravity="left"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/countFluencia"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+
+                    android:text="0/10"
+                    android:textSize="@dimen/size_info_radios"
+                    android:textStyle="bold" />
+            </LinearLayout>
+            <SeekBar
+                android:id="@+id/seekBarInformacoes"
+                style="@style/Widget.AppCompat.SeekBar.Discrete"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:max="10"
+                android:progress="0"
+                android:layout_marginTop="@dimen/activity_entre_radios"/>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Informações sobre o país/ bandeira :  -  "
+                    android:textSize="@dimen/size_info_radios"
+                    android:layout_gravity="left"
+                    android:textStyle="bold" />
+                <TextView
+                    android:id="@+id/countInformacoes"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="0/10"
+                    android:textSize="@dimen/size_info_radios"
+                    android:textStyle="bold" />
+            </LinearLayout>
+            <SeekBar
+                android:id="@+id/seekBarProducao"
+                style="@style/Widget.AppCompat.SeekBar.Discrete"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:max="10"
+                android:progress="0"
+                android:layout_marginTop="@dimen/activity_entre_radios"/>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Produção tecnológica :  -------------   "
+                    android:textSize="@dimen/size_info_radios"
+                    android:layout_gravity="left"
+                    android:textStyle="bold" />
+                <TextView
+                    android:id="@+id/countProducao"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="0/10"
+                    android:textSize="@dimen/size_info_radios"
+                    android:textStyle="bold" />
+            </LinearLayout>
+
+            <SeekBar
+                android:id="@+id/seekBarJogos"
+                style="@style/Widget.AppCompat.SeekBar.Discrete"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:max="10"
+                android:progress="0"
+                android:layout_marginTop="@dimen/activity_entre_radios"/>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Jogos de interação com visitantes:  -   "
+                    android:textSize="@dimen/size_info_radios"
+                    android:layout_gravity="left"
+                    android:textStyle="bold" />
+                <TextView
+                    android:id="@+id/countJogos"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="0/10"
+                    android:textSize="@dimen/size_info_radios"
+                    android:textStyle="bold" />
+            </LinearLayout>
+
+            <SeekBar
+                android:id="@+id/seekBarCriatividade"
+                style="@style/Widget.AppCompat.SeekBar.Discrete"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:max="10"
+                android:progress="0"
+                android:layout_marginTop="@dimen/activity_entre_radios"/>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Criatividade:  ----------------------   "
+                    android:textSize="@dimen/size_info_radios"
+                    android:layout_gravity="left"
+                    android:textStyle="bold" />
+                <TextView
+                    android:id="@+id/countCriatividade"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="0/10"
+                    android:textSize="@dimen/size_info_radios"
+                    android:textStyle="bold" />
+            </LinearLayout>
+
+            <SeekBar
+                android:id="@+id/seekBarOrganizacao"
+                style="@style/Widget.AppCompat.SeekBar.Discrete"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:max="10"
+                android:progress="0"
+                android:layout_marginTop="@dimen/activity_entre_radios"/>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Organização:  ----------------------   "
+                    android:textSize="@dimen/size_info_radios"
+                    android:layout_gravity="left"
+                    android:textStyle="bold" />
+                <TextView
+                    android:id="@+id/countOrganizacao"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="0/10"
+                    android:textSize="@dimen/size_info_radios"
+                    android:textStyle="bold" />
+            </LinearLayout>
+            <Button
+                android:id="@+id/btnSalvar"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Salvar"
+                android:layout_marginTop="@dimen/activity_entre_radios"/>
+        </LinearLayout>
+    </ScrollView>
+
 </android.support.constraint.ConstraintLayout>

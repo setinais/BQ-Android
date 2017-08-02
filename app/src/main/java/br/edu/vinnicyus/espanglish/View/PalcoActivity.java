@@ -42,6 +42,7 @@ public class PalcoActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_palco);
+        getSupportActionBar().setTitle("Votação Palco");
 
         Intent itent = getIntent();
         Bundle dados = itent.getExtras();
@@ -73,21 +74,27 @@ public class PalcoActivity extends AppCompatActivity {
         {
             seekBarDesfile.setProgress(palco.getDesfile_traje());
             countDesfile.setText(palco.getDesfile_traje() + " / " + seekBarDesfile.getMax());
+            value_seekbar[0] = palco.getDesfile_traje();
 
             seekBarFluencia.setProgress(palco.getFluencia_lingua());
             countFluencia.setText(palco.getFluencia_lingua() + " / " + seekBarFluencia.getMax());
+            value_seekbar[1] = palco.getFluencia_lingua();
 
             seekBarPresenca.setProgress(palco.getPresenca_de_palco());
             countPresenca.setText(palco.getPresenca_de_palco() + " / " + seekBarPresenca.getMax());
+            value_seekbar[2] = palco.getPresenca_de_palco();
 
             seekBarQualidade.setProgress(palco.getQualidade_slide());
             countQualidade.setText(palco.getQualidade_slide() + " / " + seekBarQualidade.getMax());
+            value_seekbar[3] = palco.getQualidade_slide();
 
             seekBarApresentacao.setProgress(palco.getApresentacao_cultural());
             countApresentacao.setText(palco.getApresentacao_cultural() + " / " + seekBarApresentacao.getMax());
+            value_seekbar[4] = palco.getApresentacao_cultural();
 
             seekBarTempo.setProgress(palco.getUso_tempo());
             countTempo.setText(palco.getUso_tempo() + " / " + seekBarTempo.getMax());
+            value_seekbar[5] = palco.getUso_tempo();
         }
         else
         {

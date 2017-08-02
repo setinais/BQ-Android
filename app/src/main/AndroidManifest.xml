@@ -34,7 +34,6 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".View.CriteriosActivity" android:parentActivityName=".View.HomeActivity"/>
         <activity android:name=".View.HomeActivity" />
         <activity android:name=".View.BarracaActivity" android:parentActivityName=".View.HomeActivity"/>
         <activity android:name=".View.PalcoActivity" android:parentActivityName=".View.HomeActivity"/>

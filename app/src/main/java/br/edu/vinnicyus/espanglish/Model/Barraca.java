@@ -3,6 +3,7 @@ package br.edu.vinnicyus.espanglish.Model;
 import com.activeandroid.Model;
 import com.activeandroid.annotation.Column;
 import com.activeandroid.annotation.Table;
+import com.activeandroid.query.Select;
 
 /**
  * Created by Vinnicyus on 05/07/2017.
@@ -10,6 +11,8 @@ import com.activeandroid.annotation.Table;
 @Table(name = "barracas", id = "id")
 public class Barraca extends Model{
 
+    @Column(name = "codigo")
+    private String codigo;
     @Column(name = "recepcao")
     private int recepcao;
     @Column(name = "utilizacao_materiais")
@@ -28,6 +31,14 @@ public class Barraca extends Model{
     private int criatividade;
     @Column(name = "organizacao")
     private int organizacao;
+
+    public String getCodigo() {
+        return codigo;
+    }
+
+    public void setCodigo(String codigo) {
+        this.codigo = codigo;
+    }
 
     public int getRecepcao() {
         return recepcao;
@@ -99,5 +110,11 @@ public class Barraca extends Model{
 
     public void setOrganizacao(int organizacao) {
         this.organizacao = organizacao;
+    }
+
+    public static Barraca getVotos(String codigo)
+    {
+        Barraca barraca = new Select().from(Barraca.class).where("codigo = ?", codigo).executeSingle();
+        return barraca;
     }
 }

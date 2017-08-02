@@ -10,7 +10,9 @@
     <ScrollView
         android:id="@+id/scrool"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        tools:layout_editor_absoluteY="0dp"
+        tools:layout_editor_absoluteX="8dp">
 
 
 
