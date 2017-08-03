@@ -49,6 +49,7 @@ public class HomeActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
 
+
         btnVotar = (Button) findViewById(R.id.btnVotar);
 
         rgp = (RadioGroup) findViewById(R.id.radioGroup1);
@@ -70,6 +71,7 @@ public class HomeActivity extends AppCompatActivity {
         String jurado = preferences.getString("nome", null);
 
 
+        getSupportActionBar().setTitle("Bem Vindo "+jurado);
 
         Jurado j = Jurado.getUsuario(jurado);
         if(j.getLingua().equals("Espanhol"))
