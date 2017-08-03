@@ -13,19 +13,12 @@
     tools:context="br.edu.vinnicyus.espanglish.LoginActivity">
 
     <!-- Login progress -->
-    <ProgressBar
-        android:id="@+id/login_progress"
-        style="?android:attr/progressBarStyleLarge"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="8dp"
-        android:visibility="gone" />
-
     <ImageView
         android:id="@+id/imageView"
-        android:layout_width="match_parent"
         android:layout_height="136dp"
-        app:srcCompat="@mipmap/logo" />
+        android:layout_width="wrap_content"
+        app:srcCompat="@mipmap/logo720x360"
+        android:layout_marginBottom="50dp"/>
 
     <ScrollView
         android:id="@+id/login_form"

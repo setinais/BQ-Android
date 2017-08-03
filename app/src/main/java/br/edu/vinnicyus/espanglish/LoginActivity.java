@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.Toast;
 
 import br.edu.vinnicyus.espanglish.Controller.LoginValidator;
@@ -32,6 +33,9 @@ public class LoginActivity extends AppCompatActivity{
 
         ConfigsApp check = new ConfigsApp();
         check.checkStatus();
+
+        ImageView iv = (ImageView) findViewById(R.id.imageView);
+        iv.setVisibility(View.VISIBLE);
 
         preferences = getSharedPreferences("pref",Context.MODE_PRIVATE);
 

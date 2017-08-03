@@ -20,11 +20,11 @@
 
         <ImageView
             android:id="@+id/imageView"
-            android:layout_width="200dp"
+            android:layout_width="wrap_content"
             android:layout_height="136dp"
-            app:srcCompat="@mipmap/logo"
+            app:srcCompat="@mipmap/logo720x360"
             android:layout_gravity="center"
-            />
+            android:layout_marginBottom="@dimen/activity_entre_radios"/>
 
         <RadioGroup
             android:id="@+id/radioGroup1"
