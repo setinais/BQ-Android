@@ -41,6 +41,7 @@ public class HomeActivity extends AppCompatActivity {
     private TextView tv;
 
     private Bundle dados;
+    private String pais;
 
     private String[][] setTitleToobar;
 
@@ -64,8 +65,6 @@ public class HomeActivity extends AppCompatActivity {
 
         radio6 = (RadioButton) findViewById(R.id.radioButton6);
         radio7 = (RadioButton) findViewById(R.id.radioButton7);
-
-
 
         preferences = getSharedPreferences("pref",Context.MODE_PRIVATE);
         String jurado = preferences.getString("nome", null);
@@ -134,6 +133,7 @@ public class HomeActivity extends AppCompatActivity {
                     if(Integer.parseInt(setTitleToobar[v][0]) == radio_selecionado_temporario.getId())
                     {
                         title = setTitleToobar[v][1];
+                        pais = setTitleToobar[v][1];
                     }
                 }
                 getSupportActionBar().setTitle(title);
@@ -160,7 +160,7 @@ public class HomeActivity extends AppCompatActivity {
                     radio_selected_pais = (RadioButton) findViewById(id_p);
                     radio_selected_tipo = (RadioButton) findViewById(id_t);
 
-                    dados.putString("pais", (String) radio_selected_pais.getText());
+                    dados.putString("pais", (String) pais);
 
                     Intent intent;
                     if(radio_selected_tipo.getText().equals("Palco"))
