@@ -3,6 +3,7 @@ package br.edu.vinnicyus.espanglish.View;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.support.annotation.IdRes;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -25,7 +26,7 @@ public class HomeActivity extends AppCompatActivity {
     private RadioButton radio3;
     private RadioButton radio4;
     private RadioButton radio5;
-
+    private RadioButton radio8;
 
     private RadioButton radio6;
     private RadioButton radio7;
@@ -55,6 +56,7 @@ public class HomeActivity extends AppCompatActivity {
         radio3 = (RadioButton) findViewById(R.id.radioButton3);
         radio4 = (RadioButton) findViewById(R.id.radioButton4);
         radio5 = (RadioButton) findViewById(R.id.radioButton5);
+        radio8 = (RadioButton) findViewById(R.id.radioButton8);
 
         radio6 = (RadioButton) findViewById(R.id.radioButton6);
         radio7 = (RadioButton) findViewById(R.id.radioButton7);
@@ -67,36 +69,47 @@ public class HomeActivity extends AppCompatActivity {
         Jurado j = Jurado.getUsuario(jurado);
         if(j.getLingua().equals("Espanhol"))
         {
-            radio.setButtonDrawable(R.mipmap.nicaragua32);
-            radio2.setButtonDrawable(R.mipmap.nicaragua32);
-            radio3.setButtonDrawable(R.mipmap.nicaragua32);
-            radio4.setButtonDrawable(R.mipmap.nicaragua32);
-            radio5.setButtonDrawable(R.mipmap.nicaragua32);
+            radio.setButtonDrawable(R.mipmap.espanha32);
+            radio2.setButtonDrawable(R.mipmap.mexico32);
+            radio3.setButtonDrawable(R.mipmap.portorico32);
+            radio4.setButtonDrawable(R.mipmap.bolivia32);
+            radio5.setVisibility(View.INVISIBLE);
+            radio8.setVisibility(View.INVISIBLE);
 
             radio.setText("Espanha");
-            radio2.setText("China");
-            radio3.setText("Japao");
-            radio4.setText("Estados Unidos");
-            radio5.setText("Espan");
+            radio2.setText("México");
+            radio3.setText("Porto Rico");
+            radio4.setText("Bolívia");
         }
         else if(j.getLingua().equals("Ingles"))
         {
-            radio.setButtonDrawable(R.mipmap.nicaragua32);
-            radio2.setButtonDrawable(R.mipmap.nicaragua32);
-            radio3.setButtonDrawable(R.mipmap.nicaragua32);
-            radio4.setButtonDrawable(R.mipmap.nicaragua32);
-            radio5.setButtonDrawable(R.mipmap.nicaragua32);
+            radio.setButtonDrawable(R.mipmap.eua32);
+            radio2.setButtonDrawable(R.mipmap.inglaterra32);
+            radio3.setButtonDrawable(R.mipmap.novazelandia32);
+            radio4.setButtonDrawable(R.mipmap.jamaica32);
+            radio5.setButtonDrawable(R.mipmap.irlanda32);
+            radio8.setButtonDrawable(R.mipmap.africadosul32);
 
-            radio.setText("a");
-            radio2.setText("b");
-            radio3.setText("c");
-            radio4.setText("d");
-            radio5.setText("e");
+            radio.setText("EUA");
+            radio2.setText("Inglaterra");
+            radio3.setText("Nova Zelândia");
+            radio4.setText("Jamaica");
+            radio5.setText("Irlanda");
+            radio8.setText("África do Sul");
         }
         else
         {
             Toast.makeText(this, "Falha na recuperação dos dados!", Toast.LENGTH_LONG).show();
         }
+
+        rgp.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(RadioGroup group, @IdRes int checkedId) {
+                RadioButton radio_selecionado_temporario = (RadioButton) findViewById(rgp.getCheckedRadioButtonId());
+                getSupportActionBar().setTitle(radio_selecionado_temporario.getText());
+            }
+        });
+
         dados = new Bundle();
         dados.putString("jurado", j.getCpf());
 
@@ -109,8 +122,8 @@ public class HomeActivity extends AppCompatActivity {
                 int id_t = rgt.getCheckedRadioButtonId();
                 if(id_p == -1 || id_t == -1)
                 {
-                    tv.setError("Por favor escolha um pais e um metodo de votação!");
-                    tv.setText("Por favor escolha um pais e um metodo de votação!");
+                    tv.setError("Por favor escolha um país e um método de votação!");
+                    tv.setText("Por favor escolha um país e um método de votação!");
                 }
                 else
                 {

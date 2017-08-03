@@ -11,12 +11,20 @@ public class Configs {
     public String[][] jurados =
             {
                     {"Vinnicyus","02286373175","Espanhol"},
-                    {"Mauricio","35001941172","Ingles"}
+                    {"Iblayr","05053855110","Ingles"}
             };
     public String[][] paises =
             {
                     {"Espanha","espanha32","Espanhol"},
-                    {"Estados Unidos","usa32","Espanhol"}
+                    {"México","mexico32","Espanhol"},
+                    {"Porto Rico","portorico32","Espanhol"},
+                    {"Bolívia","bolivia32","Espanhol"},
+                    {"EUA","eua32","Ingles"},
+                    {"Inglaterra","inglaterra32","Ingles"},
+                    {"Nova Zelândia","novazelandia32","Ingles"},
+                    {"Jamaica","jamaica32","Ingles"},
+                    {"Irlanda","irlanda32","Ingles"},
+                    {"África do Sul","africadosul32","Ingles"}
             };
     public static Configs getConfigs()
     {

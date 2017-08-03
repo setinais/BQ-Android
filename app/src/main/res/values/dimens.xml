@@ -10,4 +10,6 @@
 
     <dimen name="activity_entre_radios">30dp</dimen>
 
+    <dimen name="activity_entre_radios_home">10dp</dimen>
+
 </resources>
