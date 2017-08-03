@@ -15,16 +15,16 @@ public class Configs {
             };
     public String[][] paises =
             {
-                    {"Espanha","espanha32","Espanhol"},
-                    {"México","mexico32","Espanhol"},
-                    {"Porto Rico","portorico32","Espanhol"},
-                    {"Bolívia","bolivia32","Espanhol"},
-                    {"EUA","eua32","Ingles"},
-                    {"Inglaterra","inglaterra32","Ingles"},
-                    {"Nova Zelândia","novazelandia32","Ingles"},
-                    {"Jamaica","jamaica32","Ingles"},
-                    {"Irlanda","irlanda32","Ingles"},
-                    {"África do Sul","africadosul32","Ingles"}
+                    {"Espanha","1","Espanhol"},
+                    {"México","2","Espanhol"},
+                    {"Porto Rico","3","Espanhol"},
+                    {"Bolívia","4","Espanhol"},
+                    {"EUA","5","Ingles"},
+                    {"Inglaterra","6","Ingles"},
+                    {"Nova Zelândia","7","Ingles"},
+                    {"Jamaica","8","Ingles"},
+                    {"Irlanda","9","Ingles"},
+                    {"África do Sul","0","Ingles"}
             };
     public static Configs getConfigs()
     {

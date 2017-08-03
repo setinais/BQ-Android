@@ -13,8 +13,8 @@ public class Pais extends Model{
     @Column (name = "nome")
     private String nome;
 
-    @Column (name = "url")
-    private String url;
+    @Column (name = "codigo")
+    private String codigo;
 
     @Column (name = "lingua")
     private String lingua;
@@ -27,12 +27,12 @@ public class Pais extends Model{
         this.nome = nome;
     }
 
-    public String getUrl() {
-        return url;
+    public String getCodigo() {
+        return codigo;
     }
 
-    public void setUrl(String url) {
-        this.url = url;
+    public void setCodigo(String url) {
+        this.codigo = url;
     }
 
     public String getLingua() {

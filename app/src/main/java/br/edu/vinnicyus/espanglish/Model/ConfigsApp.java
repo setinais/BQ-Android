@@ -64,7 +64,7 @@ public class ConfigsApp extends Model {
             for (int y = 0; y < dados.paises.length; y++) {
                 Pais p = new Pais();
                 p.setNome(dados.paises[y][0]);
-                p.setUrl(dados.paises[y][1]);
+                p.setCodigo(dados.paises[y][1]);
                 p.setLingua(dados.paises[y][2]);
                 p.save();
             }
