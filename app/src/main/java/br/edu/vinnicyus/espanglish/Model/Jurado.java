@@ -29,6 +29,12 @@ public class Jurado extends Model{
         return jurado;
     }
 
+    public static String getCodigoJurado(String jurado)
+    {
+        Jurado j = Jurado.getUsuario(jurado);
+        return j.getCpf();
+    }
+
     public String getNome() {
         return nome;
     }

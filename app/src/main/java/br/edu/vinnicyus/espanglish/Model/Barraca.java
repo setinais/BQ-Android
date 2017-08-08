@@ -1,5 +1,7 @@
 package br.edu.vinnicyus.espanglish.Model;
 
+import java.util.List;
+
 import com.activeandroid.Model;
 import com.activeandroid.annotation.Column;
 import com.activeandroid.annotation.Table;
@@ -31,6 +33,9 @@ public class Barraca extends Model{
     private int criatividade;
     @Column(name = "organizacao")
     private int organizacao;
+    //1 - enviado, 2 - não enviado
+    @Column(name = "status_envio")
+    private int status_envio;
 
     public String getCodigo() {
         return codigo;
@@ -112,9 +117,22 @@ public class Barraca extends Model{
         this.organizacao = organizacao;
     }
 
+    public int getStatus_envio() {
+        return status_envio;
+    }
+
+    public void setStatus_envio(int status_envio) {
+        this.status_envio = status_envio;
+    }
+
     public static Barraca getVotos(String codigo)
     {
         Barraca barraca = new Select().from(Barraca.class).where("codigo = ?", codigo).executeSingle();
         return barraca;
+    }
+
+    public static List<Barraca> getAll()
+    {
+        return new Select().from(Barraca.class).where("status_envio = ?", 2).execute();
     }
 }

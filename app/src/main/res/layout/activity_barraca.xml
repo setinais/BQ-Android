@@ -1,18 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-
-    tools:context="br.edu.vinnicyus.espanglish.View.BarracaActivity">
-
     <ScrollView
+        xmlns:android="http://schemas.android.com/apk/res/android"
         android:id="@+id/scrool"
         android:layout_height="wrap_content"
         tools:layout_editor_absoluteY="0dp"
         tools:layout_editor_absoluteX="8dp"
-        android:layout_width="match_parent">
+        android:layout_width="match_parent"
+        xmlns:tools="http://schemas.android.com/tools"
+        tools:context="br.edu.vinnicyus.espanglish.View.BarracaActivity">
 
 
 
@@ -38,7 +33,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:max="10"
-                android:progress="0" />
+                android:progress="0"/>
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -289,4 +284,3 @@
         </LinearLayout>
     </ScrollView>
 
-</android.support.constraint.ConstraintLayout>

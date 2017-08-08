@@ -9,6 +9,8 @@ import android.widget.SeekBar;
 import android.widget.TextView;
 
 import br.edu.vinnicyus.espanglish.Model.Barraca;
+import br.edu.vinnicyus.espanglish.Model.Pais;
+import br.edu.vinnicyus.espanglish.Model.Jurado;
 import br.edu.vinnicyus.espanglish.R;
 
 public class BarracaActivity extends AppCompatActivity {
@@ -40,7 +42,9 @@ public class BarracaActivity extends AppCompatActivity {
     private int[] value_seekbar;
 
     private String pais;
+    private String codigo_pais;
     private String jurado;
+
 
     private Barraca barraca;
 
@@ -51,6 +55,7 @@ public class BarracaActivity extends AppCompatActivity {
 
         Intent itent = getIntent();
         Bundle dados = itent.getExtras();
+        codigo_pais = Pais.getCodigoPais(dados.getString("pais"));
         pais = dados.getString("pais");
         jurado = dados.getString("jurado");
 
@@ -67,7 +72,6 @@ public class BarracaActivity extends AppCompatActivity {
         seekBarCriatividade = (SeekBar) findViewById(R.id.seekBarCriatividade);
         seekBarOrganizacao = (SeekBar) findViewById(R.id.seekBarOrganizacao);
 
-
         countRecepcao = (TextView) findViewById(R.id.countRecepcao);
         countUtilizacao = (TextView) findViewById(R.id.countUtilizacao);
         countComida = (TextView) findViewById(R.id.countComida);
@@ -82,7 +86,7 @@ public class BarracaActivity extends AppCompatActivity {
 
         value_seekbar = new int[9];
 
-        barraca = Barraca.getVotos(pais+";"+jurado);
+        barraca = Barraca.getVotos(codigo_pais+";"+jurado);
         if(barraca != null)
         {
             seekBarRecepcao.setProgress(barraca.getRecepcao());
@@ -124,7 +128,7 @@ public class BarracaActivity extends AppCompatActivity {
         else
         {
             barraca = new Barraca();
-            barraca.setCodigo(pais+";"+jurado);
+            barraca.setCodigo(codigo_pais+";"+jurado);
         }
 
 
@@ -308,6 +312,7 @@ public class BarracaActivity extends AppCompatActivity {
                 barraca.setJogos_interacao(value_seekbar[6]);
                 barraca.setCriatividade(value_seekbar[7]);
                 barraca.setOrganizacao(value_seekbar[8]);
+                barraca.setStatus_envio(2);
                 barraca.save();
                 finish();
             }

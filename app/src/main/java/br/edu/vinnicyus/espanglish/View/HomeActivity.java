@@ -3,7 +3,6 @@ package br.edu.vinnicyus.espanglish.View;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.content.res.Resources;
 import android.support.annotation.IdRes;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -14,6 +13,20 @@ import android.widget.RadioGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.JsonArrayRequest;
+import com.android.volley.toolbox.JsonObjectRequest;
+import com.android.volley.toolbox.Volley;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+
+import br.edu.vinnicyus.espanglish.Controller.WebService;
 import br.edu.vinnicyus.espanglish.Model.Jurado;
 import br.edu.vinnicyus.espanglish.R;
 
@@ -36,6 +49,7 @@ public class HomeActivity extends AppCompatActivity {
     private RadioButton radio_selected_tipo;
 
     private Button btnVotar;
+    private Button btnWs;
     private SharedPreferences preferences;
 
     private TextView tv;
@@ -45,6 +59,11 @@ public class HomeActivity extends AppCompatActivity {
 
     private String[][] setTitleToobar;
 
+    private RequestQueue requestQueue;
+
+    private String[] tabela;
+    private int v;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -52,6 +71,7 @@ public class HomeActivity extends AppCompatActivity {
 
 
         btnVotar = (Button) findViewById(R.id.btnVotar);
+        btnWs = (Button) findViewById(R.id.btn_ws);
 
         rgp = (RadioGroup) findViewById(R.id.radioGroup1);
         rgt = (RadioGroup) findViewById(R.id.radioGroup2);
@@ -143,11 +163,15 @@ public class HomeActivity extends AppCompatActivity {
         dados = new Bundle();
         dados.putString("jurado", j.getCpf());
 
+
+
+
         tv = (TextView) findViewById(R.id.text);
         btnVotar.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v)
             {
+
                 int id_p = rgp.getCheckedRadioButtonId();
                 int id_t = rgt.getCheckedRadioButtonId();
                 if(id_p == -1 || id_t == -1)
@@ -160,7 +184,7 @@ public class HomeActivity extends AppCompatActivity {
                     radio_selected_pais = (RadioButton) findViewById(id_p);
                     radio_selected_tipo = (RadioButton) findViewById(id_t);
 
-                    dados.putString("pais", (String) pais);
+                    dados.putString("pais",pais);
 
                     Intent intent;
                     if(radio_selected_tipo.getText().equals("Palco"))
@@ -180,7 +204,49 @@ public class HomeActivity extends AppCompatActivity {
 
             }
         });
+        btnWs.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View v) {
+                try {
+                    sendDados();
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+            }
+        });
+    }
+
+    private void mensagem(String m)
+    {
+        Toast.makeText(this, m, Toast.LENGTH_LONG).show();
+    }
+
+    private void sendDados() throws JSONException {
+        WebService ws = new WebService();
+
+
+            RequestQueue rq = Volley.newRequestQueue(this);
+
+            JsonObjectRequest request = new JsonObjectRequest(Request.Method.POST, "http://192.168.1.101/back/init.php",ws.getDados(), new Response.Listener<JSONObject>(){
+                @Override
+                public void onResponse(JSONObject response) {
+                    try {
+                        mensagem(response.get("callback_error").toString());
+                    } catch (JSONException e) {
+                        e.printStackTrace();
+                    }
+                }
+            }, new Response.ErrorListener(){
+                @Override
+                public void onErrorResponse(VolleyError error) {
+                    mensagem("Error de conexão!"+error.getMessage().toString());
+                }
+            });
+            request.setTag("tag");
+            rq.add(request);
 
 
     }
+
 }

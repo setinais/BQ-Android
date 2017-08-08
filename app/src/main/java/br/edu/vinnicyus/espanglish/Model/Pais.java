@@ -3,6 +3,7 @@ package br.edu.vinnicyus.espanglish.Model;
 import com.activeandroid.Model;
 import com.activeandroid.annotation.Column;
 import com.activeandroid.annotation.Table;
+import com.activeandroid.query.Select;
 
 /**
  * Created by Vinnicyus on 24/07/2017.
@@ -41,5 +42,11 @@ public class Pais extends Model{
 
     public void setLingua(String lingua) {
         this.lingua = lingua;
+    }
+
+    public static String getCodigoPais(String pais)
+    {
+        Pais p = new Select().from(Pais.class).where("nome = ?", pais).executeSingle();
+        return p.getCodigo();
     }
 }

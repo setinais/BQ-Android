@@ -9,6 +9,8 @@ import android.widget.SeekBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import br.edu.vinnicyus.espanglish.Model.Jurado;
+import br.edu.vinnicyus.espanglish.Model.Pais;
 import br.edu.vinnicyus.espanglish.Model.Palco;
 import br.edu.vinnicyus.espanglish.R;
 
@@ -35,6 +37,7 @@ public class PalcoActivity extends AppCompatActivity {
     private int[] value_seekbar;
 
     private String pais;
+    private String codigo_pais;
     private String jurado;
 
     private Palco palco;
@@ -46,6 +49,7 @@ public class PalcoActivity extends AppCompatActivity {
 
         Intent itent = getIntent();
         Bundle dados = itent.getExtras();
+        codigo_pais = Pais.getCodigoPais(dados.getString("pais"));
         pais = dados.getString("pais");
         jurado = dados.getString("jurado");
 
@@ -69,7 +73,7 @@ public class PalcoActivity extends AppCompatActivity {
 
         value_seekbar = new int[6];
 
-        palco = Palco.getVotos(pais+";"+jurado);
+        palco = Palco.getVotos(codigo_pais+";"+jurado);
         if(palco != null)
         {
             seekBarDesfile.setProgress(palco.getDesfile_traje());
@@ -99,7 +103,7 @@ public class PalcoActivity extends AppCompatActivity {
         else
         {
             palco = new Palco();
-            palco.setCodigo(pais+";"+jurado);
+            palco.setCodigo(codigo_pais+";"+jurado);
         }
         textviewPais.setText("Palco -> "+pais);
 
@@ -236,6 +240,7 @@ public class PalcoActivity extends AppCompatActivity {
                 palco.setQualidade_slide(value_seekbar[3]);
                 palco.setApresentacao_cultural(value_seekbar[4]);
                 palco.setUso_tempo(value_seekbar[5]);
+                palco.setStatus_envio(2);
                 palco.save();
                 finish();
             }

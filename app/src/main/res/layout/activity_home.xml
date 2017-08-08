@@ -14,7 +14,7 @@
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        tools:layout_editor_absoluteY="8dp"
+        tools:layout_editor_absoluteY="7dp"
         tools:layout_editor_absoluteX="8dp">
 
 
@@ -115,7 +115,13 @@
             android:id="@+id/btnVotar"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Votar" />
+            android:text="Avaliar" />
+
+        <Button
+            android:id="@+id/btn_ws"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="TestWebService" />
     </LinearLayout>
     </ScrollView>
 </android.support.constraint.ConstraintLayout>

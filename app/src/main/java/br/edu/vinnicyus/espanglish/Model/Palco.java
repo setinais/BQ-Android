@@ -5,6 +5,8 @@ import com.activeandroid.annotation.Column;
 import com.activeandroid.annotation.Table;
 import com.activeandroid.query.Select;
 
+import java.util.List;
+
 /**
  * Created by Vinnicyus on 05/07/2017.
  */
@@ -25,6 +27,10 @@ public class Palco extends Model{
     private int apresentacao_cultural;
     @Column(name = "uso_tempo")
     private int uso_tempo;
+
+    //1 - enviado, 2 - não enviado
+    @Column(name = "status_envio")
+    private int status_envio;
 
     public String getCodigo() {
         return codigo;
@@ -82,9 +88,21 @@ public class Palco extends Model{
         this.uso_tempo = uso_tempo;
     }
 
-    public static Palco getVotos(String codigo)
-    {
+    public int getStatus_envio() {
+        return status_envio;
+    }
+
+    public void setStatus_envio(int status_envio) {
+        this.status_envio = status_envio;
+    }
+
+    public static Palco getVotos(String codigo){
         Palco palco = new Select().from(Palco.class).where("codigo = ?", codigo).executeSingle();
         return palco;
+    }
+
+    public static List<Palco> getAll()
+    {
+        return new Select().from(Palco.class).where("status_envio = ?", 2).execute();
     }
 }
