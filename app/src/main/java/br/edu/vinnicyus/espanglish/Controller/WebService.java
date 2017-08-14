@@ -1,47 +1,55 @@
 package br.edu.vinnicyus.espanglish.Controller;
 
 
+import android.util.Log;
 
-import org.json.JSONException;
-import org.json.JSONObject;
-
-import java.util.List;
-
-import br.edu.vinnicyus.espanglish.Model.Palco;
 import br.edu.vinnicyus.espanglish.Model.Barraca;
+import br.edu.vinnicyus.espanglish.Model.Palco;
 
 /**
  * Created by Vinnicyus on 02/08/2017.
  */
 
-public class WebService
-{
+public class WebService {
 
-    JSONObject params;
+    private String retorno_server;
 
-    public JSONObject getDados() throws JSONException {
-        params = new JSONObject();
-        getPalco();
-        getBarraca();
-        return params;
+    public WebService(String retorno_server)
+    {
+        this.retorno_server = retorno_server;
     }
-    private void getBarraca() throws JSONException {
-        List<Barraca> all_barraca = Barraca.getAll();
 
-        for (int v=0;v<all_barraca.size();v++)
+    public void tratramentoDados()
+    {
+        String[] partes = this.retorno_server.split ("[{]+", -1);
+        String[] barraca = partes[1].split("[(]",-1);
+        atualizarStatusBarraca(barraca[1]);
+        String[] palco = partes[2].split("[(]",-1);
+        atualizarStatusPalco(palco[1]);
+    }
+
+    private void atualizarStatusBarraca(String dados)
+    {
+        String[] explode_dados = dados.split("[;]",-1);
+        Barraca barraca;
+        int t = explode_dados.length -1;
+        for (int v=0;v<t;v++)
         {
-            this.params.put("barraca"+v,all_barraca.get(v));
+            barraca = Barraca.getVotos(explode_dados[v]);
+            barraca.setStatus_envio(1);
+            barraca.save();
         }
-
     }
 
-    private void getPalco() throws JSONException {
-
-        List<Palco> all_palco = Palco.getAll();
-        for (int v=0;v<all_palco.size();v++)
+    private void atualizarStatusPalco(String dados)
+    {
+        String[] explode_dados = dados.split("[;]",-1);
+        Palco palco;
+        for (int v=0;v<explode_dados.length -1;v++)
         {
-            this.params.put("palco"+v,all_palco.get(v));
+            palco = Palco.getVotos(explode_dados[v]);
+            palco.setStatus_envio(1);
+            palco.save();
         }
     }
-
 }

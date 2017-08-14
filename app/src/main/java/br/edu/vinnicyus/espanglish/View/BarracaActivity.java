@@ -86,7 +86,7 @@ public class BarracaActivity extends AppCompatActivity {
 
         value_seekbar = new int[9];
 
-        barraca = Barraca.getVotos(codigo_pais+";"+jurado);
+        barraca = Barraca.getVotos(codigo_pais+"."+jurado);
         if(barraca != null)
         {
             seekBarRecepcao.setProgress(barraca.getRecepcao());
@@ -128,7 +128,7 @@ public class BarracaActivity extends AppCompatActivity {
         else
         {
             barraca = new Barraca();
-            barraca.setCodigo(codigo_pais+";"+jurado);
+            barraca.setCodigo(codigo_pais+"."+jurado);
         }
 
 

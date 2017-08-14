@@ -73,7 +73,7 @@ public class PalcoActivity extends AppCompatActivity {
 
         value_seekbar = new int[6];
 
-        palco = Palco.getVotos(codigo_pais+";"+jurado);
+        palco = Palco.getVotos(codigo_pais+"."+jurado);
         if(palco != null)
         {
             seekBarDesfile.setProgress(palco.getDesfile_traje());
@@ -103,7 +103,7 @@ public class PalcoActivity extends AppCompatActivity {
         else
         {
             palco = new Palco();
-            palco.setCodigo(codigo_pais+";"+jurado);
+            palco.setCodigo(codigo_pais+"."+jurado);
         }
         textviewPais.setText("Palco -> "+pais);
 

@@ -1,10 +1,13 @@
 package br.edu.vinnicyus.espanglish;
 
+import android.app.Activity;
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -25,6 +28,8 @@ public class LoginActivity extends AppCompatActivity{
     private Button btnLogar;
 
     private SharedPreferences preferences;
+
+    private ProgressDialog dialog;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
@@ -57,30 +62,49 @@ public class LoginActivity extends AppCompatActivity{
             @Override
             public void onClick(View v)
             {
-                String login = nome.getText().toString();
-                String senha = password.getText().toString();
-
-                LoginValidator isValid = new LoginValidator();
-                isValid.setLogin(login);
-                isValid.setSenha(senha);
-                isValid.setEditLogin(nome);
-                isValid.setEditSenha(password);
-                isValid.validarCampos(login,senha);
-                {
-                    if(isValid.isvalid())
-                    {
-                        SharedPreferences.Editor editor = getSharedPreferences("pref", MODE_PRIVATE).edit();
-                        editor.putString("nome", login);
-                        editor.putString("password", senha);
-                        editor.commit();
-
-                        Intent intent = new Intent(LoginActivity.this, HomeActivity.class);
-                        startActivity(intent);
-                    }
-                }
+                validar();
             }
         });
     }
 
+    public void validar()
+    {
 
+        dialog =new ProgressDialog(LoginActivity.this);
+        dialog.setMessage("Validando usuario... aguarde");
+        dialog.setIndeterminate(false);
+        dialog.setCanceledOnTouchOutside(true);
+        dialog.setCancelable(true);
+        dialog.show();
+
+        String login = nome.getText().toString().toLowerCase();
+        String senha = password.getText().toString();
+
+        LoginValidator isValid = new LoginValidator();
+        isValid.setLogin(login);
+        isValid.setSenha(senha);
+        isValid.setEditLogin(nome);
+        isValid.setEditSenha(password);
+        isValid.validarCampos(login, senha);
+        if (isValid.isvalid()) {
+
+            SharedPreferences.Editor editor = getSharedPreferences("pref", MODE_PRIVATE).edit();
+            editor.putString("nome", login);
+            editor.putString("password", senha);
+            editor.commit();
+
+            Intent intent = new Intent(LoginActivity.this, HomeActivity.class);
+            startActivity(intent);
+        }
+        new Thread(){
+            public void run() {
+                try {
+                    Thread.sleep(500);
+                    dialog.dismiss();
+                } catch (Exception e) {
+                    dialog.dismiss();
+                }
+            }
+        }.start();
+    }
 }

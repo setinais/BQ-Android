@@ -1,11 +1,14 @@
 package br.edu.vinnicyus.espanglish.View;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.support.annotation.IdRes;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.RadioButton;
@@ -17,17 +20,20 @@ import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
-import com.android.volley.toolbox.JsonArrayRequest;
-import com.android.volley.toolbox.JsonObjectRequest;
+import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
 
+
+
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 import br.edu.vinnicyus.espanglish.Controller.WebService;
+import br.edu.vinnicyus.espanglish.Model.Barraca;
 import br.edu.vinnicyus.espanglish.Model.Jurado;
+import br.edu.vinnicyus.espanglish.Model.Palco;
 import br.edu.vinnicyus.espanglish.R;
 
 public class HomeActivity extends AppCompatActivity {
@@ -59,16 +65,14 @@ public class HomeActivity extends AppCompatActivity {
 
     private String[][] setTitleToobar;
 
-    private RequestQueue requestQueue;
-
-    private String[] tabela;
     private int v;
+    private Map<String, String> params;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
-
 
         btnVotar = (Button) findViewById(R.id.btnVotar);
         btnWs = (Button) findViewById(R.id.btn_ws);
@@ -204,49 +208,121 @@ public class HomeActivity extends AppCompatActivity {
 
             }
         });
-        btnWs.setOnClickListener(new View.OnClickListener() {
-
-            @Override
-            public void onClick(View v) {
-                try {
-                    sendDados();
-                } catch (JSONException e) {
-                    e.printStackTrace();
-                }
-            }
-        });
     }
 
-    private void mensagem(String m)
+    public void mensagem(String m)
     {
         Toast.makeText(this, m, Toast.LENGTH_LONG).show();
     }
 
-    private void sendDados() throws JSONException {
-        WebService ws = new WebService();
+    public void sendDados(List<Barraca> barraca, List<Palco> palco){
 
+        params = new HashMap<>();
+        String barraca_carvalho = "";
+        String palco_carvalho = "";
+        if(!barraca.isEmpty())
+            for (int v=0;v<barraca.size();v++) {
+                barraca_carvalho += "{codigo:"+barraca.get(v).getCodigo()+
+                                ";comidas_tipicas:"+Integer.toString(barraca.get(v).getComidas_bebidas_tipicas())+
+                                ";criatividade:"+Integer.toString(barraca.get(v).getCriatividade())+
+                                ";fluencia_lingua:"+Integer.toString(barraca.get(v).getFluencia_lingua())+
+                                ";informacoes_pais_bandeira:"+Integer.toString(barraca.get(v).getInformacoes_pais_bandeira())+
+                                ";jogos_interacao:"+Integer.toString(barraca.get(v).getJogos_interacao())+
+                                ";organizacao:"+Integer.toString(barraca.get(v).getOrganizacao())+
+                                ";producao_tecnologica:"+Integer.toString(barraca.get(v).getProducao_tecnologica())+
+                                ";recepcao:"+Integer.toString(barraca.get(v).getRecepcao())+
+                                ";utilizacao_materiais:"+Integer.toString(barraca.get(v).getUtilizacao_materiais());
+            }
+        if (!palco.isEmpty())
+            for (int v=0;v<palco.size();v++) {
+                palco_carvalho += "{codigo:"+palco.get(v).getCodigo()+
+                        ";apresentacao_cultural:"+Integer.toString(palco.get(v).getApresentacao_cultural())+
+                        ";desfile:"+Integer.toString(palco.get(v).getDesfile_traje())+
+                        ";fluencia_lingua:"+Integer.toString(palco.get(v).getFluencia_lingua())+
+                        ";preenca_de_palco:"+Integer.toString(palco.get(v).getPresenca_de_palco())+
+                        ";qualidade_slide:"+Integer.toString(palco.get(v).getQualidade_slide())+
+                        ";uso_tempo:"+Integer.toString(palco.get(v).getUso_tempo());
+            }
 
-            RequestQueue rq = Volley.newRequestQueue(this);
+        params.put("dados", "[barraca"+barraca_carvalho+"[palco"+palco_carvalho);
 
-            JsonObjectRequest request = new JsonObjectRequest(Request.Method.POST, "http://192.168.1.101/back/init.php",ws.getDados(), new Response.Listener<JSONObject>(){
-                @Override
-                public void onResponse(JSONObject response) {
-                    try {
-                        mensagem(response.get("callback_error").toString());
-                    } catch (JSONException e) {
-                        e.printStackTrace();
-                    }
+        RequestQueue rq = Volley.newRequestQueue(this);
+
+        StringRequest request = new StringRequest(Request.Method.POST,"http://192.168.1.102/back/init.php", new Response.Listener<String>() {
+            @Override
+            public void onResponse(String response) {
+                if(!response.toString().equals("Error")) {
+                    WebService ws = new WebService(response.toString());
+                    ws.tratramentoDados();
                 }
-            }, new Response.ErrorListener(){
-                @Override
-                public void onErrorResponse(VolleyError error) {
-                    mensagem("Error de conexão!"+error.getMessage().toString());
+                else
+                {
+                    mensagem("Error na busca dos dados!");
                 }
-            });
-            request.setTag("tag");
-            rq.add(request);
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                mensagem("Error de conexão!" + error.getMessage().toString());
+            }
+        }) {
+            @Override
+            protected Map<String, String> getParams() {
 
-
+                Map<String, String> params2 = params;
+                return params2;
+            }
+        };
+        rq.add(request);
     }
 
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.menu, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item){
+        switch (item.getItemId()) {
+            case R.id.update :
+                atualizar(this,item);
+                break;
+        }
+        return false;
+    }
+
+    public void atualizar(final Activity activity, final MenuItem menu)
+    {
+
+        List<Barraca> all_barraca = Barraca.getAll();
+        List<Palco> all_palco = Palco.getAll();
+        if(all_palco.isEmpty() && all_barraca.isEmpty()){
+            mensagem("Nenhuma alteração feita!");
+        }
+        else {
+            menu.setActionView(R.layout.update);
+            sendDados(all_barraca, all_palco);
+            new Thread()
+            {
+                public void run()
+                {
+                    try {
+                        Thread.sleep(2000);
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
+                    }
+                    activity.runOnUiThread(new Runnable() {
+                        @Override
+                        public void run() {
+                            menu.setActionView(null);
+                            menu.setIcon(android.R.drawable.stat_notify_sync_noanim);
+                            mensagem("Salvo com suceesso!");
+                        }
+                    });
+                }
+            }.start();
+
+        }
+    }
 }
