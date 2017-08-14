@@ -16,6 +16,7 @@ import android.widget.RadioGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.android.volley.AuthFailureError;
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
@@ -254,6 +255,7 @@ public class HomeActivity extends AppCompatActivity {
                 if(!response.toString().equals("Error")) {
                     WebService ws = new WebService(response.toString());
                     ws.tratramentoDados();
+                    mensagem("Salvo com suceesso!");
                 }
                 else
                 {
@@ -263,11 +265,11 @@ public class HomeActivity extends AppCompatActivity {
         }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
-                mensagem("Error de conexão!" + error.getMessage().toString());
+                mensagem("Error de conexão! " + error.getLocalizedMessage());
             }
         }) {
             @Override
-            protected Map<String, String> getParams() {
+            protected Map<String, String> getParams() throws AuthFailureError{
 
                 Map<String, String> params2 = params;
                 return params2;
@@ -317,7 +319,7 @@ public class HomeActivity extends AppCompatActivity {
                         public void run() {
                             menu.setActionView(null);
                             menu.setIcon(android.R.drawable.stat_notify_sync_noanim);
-                            mensagem("Salvo com suceesso!");
+
                         }
                     });
                 }
