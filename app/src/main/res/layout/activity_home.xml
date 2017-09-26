@@ -38,42 +38,37 @@
                     android:id="@+id/radioButton"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:background="@drawable/radioedit"
+                    android:foregroundTint="@drawable/radioedit"
                     android:layout_marginTop="@dimen/activity_entre_radios_home" />
 
                 <RadioButton
                     android:id="@+id/radioButton2"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:background="@drawable/radioedit"
+                    android:foregroundTint="@drawable/radioedit"
                     android:layout_marginTop="@dimen/activity_entre_radios_home"/>
 
                 <RadioButton
                     android:id="@+id/radioButton3"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:background="@drawable/radioedit"
+                    android:foregroundTint="@drawable/radioedit"
                     android:layout_marginTop="@dimen/activity_entre_radios_home"/>
                 <RadioButton
                     android:id="@+id/radioButton4"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:background="@drawable/radioedit"
+                    android:foregroundTint="@drawable/radioedit"
                     android:layout_marginTop="@dimen/activity_entre_radios_home"/>
 
                 <RadioButton
                     android:id="@+id/radioButton5"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:background="@drawable/radioedit"
-                    android:layout_marginTop="@dimen/activity_entre_radios_home"/>
+                    android:foregroundTint="@drawable/radioedit"
+                    android:layout_marginTop="@dimen/activity_entre_radios_home"
+                    />
 
-                <RadioButton
-                    android:id="@+id/radioButton8"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:background="@drawable/radioedit"
-                    android:layout_marginTop="@dimen/activity_entre_radios_home"/>
         </RadioGroup>
 
         <RadioGroup
@@ -109,12 +104,7 @@
             android:id="@+id/btnVotar"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Avaliar" />
-
-        <Button
-            android:id="@+id/btn_ws"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="TestWebService" />
+            android:text="Avaliar"
+            android:background="@color/green"/>
     </LinearLayout>
 </ScrollView>

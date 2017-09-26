@@ -5,10 +5,13 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.CheckBox;
+import android.widget.ImageView;
 import android.widget.SeekBar;
 import android.widget.TextView;
 
 import br.edu.vinnicyus.espanglish.Model.Barraca;
+import br.edu.vinnicyus.espanglish.Model.CheckBoxBarraca;
 import br.edu.vinnicyus.espanglish.Model.Pais;
 import br.edu.vinnicyus.espanglish.Model.Jurado;
 import br.edu.vinnicyus.espanglish.R;
@@ -35,9 +38,18 @@ public class BarracaActivity extends AppCompatActivity {
     private TextView countCriatividade;
     private TextView countOrganizacao;
 
+    private CheckBox checkBoxRecepcao;
+    private CheckBox checkBoxUtilizacao;
+    private CheckBox checkBoxComida;
+    private CheckBox checkBoxFluencia;
+    private CheckBox checkBoxInformacoes;
+    private CheckBox checkBoxProducao;
+    private CheckBox checkBoxJogos;
+    private CheckBox checkBoxCriatividade;
+    private CheckBox checkBoxOrganizacao;
+
     private Button btn_votar;
 
-    private TextView textviewPais;
 
     private int[] value_seekbar;
 
@@ -45,7 +57,7 @@ public class BarracaActivity extends AppCompatActivity {
     private String codigo_pais;
     private String jurado;
 
-
+    private ImageView imageViewPais;
     private Barraca barraca;
 
     @Override
@@ -59,8 +71,43 @@ public class BarracaActivity extends AppCompatActivity {
         pais = dados.getString("pais");
         jurado = dados.getString("jurado");
 
-        textviewPais = (TextView) findViewById(R.id.textviewPais);
-        textviewPais.setText("Barraca -> "+pais);
+        getSupportActionBar().setTitle("Avaliação Barraca -> "+pais);
+
+        imageViewPais = (ImageView) findViewById(R.id.imageView);
+
+        switch (pais)
+        {
+            case "Espanha":
+                imageViewPais.setImageResource(R.mipmap.espanha);
+                break;
+            case "México":
+                imageViewPais.setImageResource(R.mipmap.mexico32);
+                break;
+            case "Porto Rico":
+                imageViewPais.setImageResource(R.mipmap.portorico32);
+                break;
+            case "Bolívia":
+                imageViewPais.setImageResource(R.mipmap.bolivia32);
+                break;
+            case "EUA":
+                imageViewPais.setImageResource(R.mipmap.eua32);
+                break;
+            case "Inglaterra":
+                imageViewPais.setImageResource(R.mipmap.inglaterra32);
+                break;
+            case "Nova Zelândia":
+                imageViewPais.setImageResource(R.mipmap.novazelandia32);
+                break;
+            case "Jamaica":
+                imageViewPais.setImageResource(R.mipmap.jamaica32);
+                break;
+            case "África do Sul":
+                imageViewPais.setImageResource(R.mipmap.africadosul32);
+                break;
+            default:
+                imageViewPais.setImageResource(R.mipmap.logo720x360);
+                break;
+        }
 
         seekBarRecepcao = (SeekBar) findViewById(R.id.seekBarRecepcao);
         seekBarUtilizacao = (SeekBar) findViewById(R.id.seekBarUtilizacao);
@@ -82,6 +129,16 @@ public class BarracaActivity extends AppCompatActivity {
         countCriatividade = (TextView) findViewById(R.id.countCriatividade);
         countOrganizacao = (TextView) findViewById(R.id.countOrganizacao);
 
+        checkBoxRecepcao = (CheckBox) findViewById(R.id.checkBoxRecepcao);
+        checkBoxUtilizacao = (CheckBox) findViewById(R.id.checkBoxUtilizacao);
+        checkBoxComida = (CheckBox) findViewById(R.id.checkBoxComida);
+        checkBoxFluencia = (CheckBox) findViewById(R.id.checkBoxFluencia);
+        checkBoxInformacoes = (CheckBox) findViewById(R.id.checkBoxInformacoes);
+        checkBoxProducao = (CheckBox) findViewById(R.id.checkBoxProducao);
+        checkBoxJogos = (CheckBox) findViewById(R.id.checkBoxJogos);
+        checkBoxCriatividade = (CheckBox) findViewById(R.id.checkBoxCriatividade);
+        checkBoxOrganizacao = (CheckBox) findViewById(R.id.checkBoxOrganizacao);
+
         btn_votar = (Button) findViewById(R.id.btnSalvar);
 
         value_seekbar = new int[9];
@@ -92,43 +149,62 @@ public class BarracaActivity extends AppCompatActivity {
             seekBarRecepcao.setProgress(barraca.getRecepcao());
             countRecepcao.setText(barraca.getRecepcao() + " / " + seekBarRecepcao.getMax());
             value_seekbar[0] = barraca.getRecepcao();
+            if (barraca.getCheckBox().isRecepcao())
+                checkBoxRecepcao.setChecked(true);
 
             seekBarUtilizacao.setProgress(barraca.getUtilizacao_materiais());
             countUtilizacao.setText(barraca.getUtilizacao_materiais() + " / " + seekBarUtilizacao.getMax());
             value_seekbar[1] = barraca.getUtilizacao_materiais();
+            if (barraca.getCheckBox().isUtilizacao_materiais())
+                checkBoxUtilizacao.setChecked(true);
 
             seekBarComida.setProgress(barraca.getComidas_bebidas_tipicas());
             countComida.setText(barraca.getComidas_bebidas_tipicas() + " / " + seekBarComida.getMax());
             value_seekbar[2] = barraca.getComidas_bebidas_tipicas();
+            if (barraca.getCheckBox().isComidas_bebidas_tipicas())
+                checkBoxComida.setChecked(true);
 
             seekBarFluencia.setProgress(barraca.getFluencia_lingua());
             countFluencia.setText(barraca.getFluencia_lingua() + " / " + seekBarFluencia.getMax());
             value_seekbar[3] = barraca.getFluencia_lingua();
+            if (barraca.getCheckBox().isFluencia_lingua())
+                checkBoxFluencia.setChecked(true);
 
             seekBarInformacoes.setProgress(barraca.getInformacoes_pais_bandeira());
             countInformacoes.setText(barraca.getInformacoes_pais_bandeira() + " / " + seekBarInformacoes.getMax());
             value_seekbar[4] = barraca.getInformacoes_pais_bandeira();
+            if (barraca.getCheckBox().isInformacoes_pais_bandeira())
+                checkBoxInformacoes.setChecked(true);
 
             seekBarProducao.setProgress(barraca.getProducao_tecnologica());
             countProducao.setText(barraca.getProducao_tecnologica() + " / " + seekBarProducao.getMax());
             value_seekbar[5] = barraca.getProducao_tecnologica();
+            if (barraca.getCheckBox().isProducao_tecnologica())
+                checkBoxProducao.setChecked(true);
 
             seekBarJogos.setProgress(barraca.getJogos_interacao());
             countJogos.setText(barraca.getJogos_interacao() + " / " + seekBarJogos.getMax());
             value_seekbar[6] = barraca.getJogos_interacao();
+            if (barraca.getCheckBox().isJogos_interacao())
+                checkBoxJogos.setChecked(true);
 
             seekBarCriatividade.setProgress(barraca.getCriatividade());
             countCriatividade.setText(barraca.getCriatividade() + " / " + seekBarCriatividade.getMax());
             value_seekbar[7] = barraca.getCriatividade();
+            if (barraca.getCheckBox().isCriatividade())
+                checkBoxCriatividade.setChecked(true);
 
             seekBarOrganizacao.setProgress(barraca.getOrganizacao());
             countOrganizacao.setText(barraca.getOrganizacao() + " / " + seekBarOrganizacao.getMax());
             value_seekbar[8] = barraca.getOrganizacao();
+            if (barraca.getCheckBox().isOrganizacao())
+                checkBoxOrganizacao.setChecked(true);
         }
         else
         {
             barraca = new Barraca();
             barraca.setCodigo(codigo_pais+"."+jurado);
+            barraca.setCheckBox(new CheckBoxBarraca());
         }
 
 
@@ -303,6 +379,18 @@ public class BarracaActivity extends AppCompatActivity {
         btn_votar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
+                barraca.getCheckBox().setRecepcao(validarCheckBox(checkBoxRecepcao,value_seekbar[0]));
+                barraca.getCheckBox().setUtilizacao_materiais(validarCheckBox(checkBoxUtilizacao,value_seekbar[1]));
+                barraca.getCheckBox().setComidas_bebidas_tipicas(validarCheckBox(checkBoxComida,value_seekbar[2]));
+                barraca.getCheckBox().setFluencia_lingua(validarCheckBox(checkBoxFluencia,value_seekbar[3]));
+                barraca.getCheckBox().setInformacoes_pais_bandeira(validarCheckBox(checkBoxInformacoes,value_seekbar[4]));
+                barraca.getCheckBox().setProducao_tecnologica(validarCheckBox(checkBoxProducao,value_seekbar[5]));
+                barraca.getCheckBox().setJogos_interacao(validarCheckBox(checkBoxJogos,value_seekbar[6]));
+                barraca.getCheckBox().setCriatividade(validarCheckBox(checkBoxCriatividade,value_seekbar[7]));
+                barraca.getCheckBox().setOrganizacao(validarCheckBox(checkBoxOrganizacao,value_seekbar[8]));
+                barraca.getCheckBox().save();
+
                 barraca.setRecepcao(value_seekbar[0]);
                 barraca.setUtilizacao_materiais(value_seekbar[1]);
                 barraca.setComidas_bebidas_tipicas(value_seekbar[2]);
@@ -317,5 +405,14 @@ public class BarracaActivity extends AppCompatActivity {
                 finish();
             }
         });
+    }
+
+    private boolean validarCheckBox(CheckBox checkBox, int progressbar)
+    {
+        if(checkBox.isChecked() && progressbar <= 9)
+        {
+            return true;
+        }
+        return false;
     }
 }

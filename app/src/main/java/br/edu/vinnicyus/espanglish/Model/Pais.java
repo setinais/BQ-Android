@@ -20,6 +20,9 @@ public class Pais extends Model{
     @Column (name = "lingua")
     private String lingua;
 
+    @Column (name = "bandeira")
+    private String bandeira;
+
     public String getNome() {
         return nome;
     }
@@ -44,9 +47,23 @@ public class Pais extends Model{
         this.lingua = lingua;
     }
 
+    public void setBandeira(String bandeira) {
+        this.bandeira = bandeira;
+    }
+
+    public String getBandeira() {
+        return bandeira;
+    }
+
     public static String getCodigoPais(String pais)
     {
         Pais p = new Select().from(Pais.class).where("nome = ?", pais).executeSingle();
         return p.getCodigo();
+    }
+
+    public static String getBandeiraPais(String pais)
+    {
+        Pais bandeira = new Select().from(Pais.class).where("nome = ?",pais).executeSingle();
+        return bandeira.getBandeira();
     }
 }

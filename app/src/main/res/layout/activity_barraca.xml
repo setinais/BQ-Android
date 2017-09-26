@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
     <ScrollView
         xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
         android:id="@+id/scrool"
         android:layout_height="wrap_content"
         tools:layout_editor_absoluteY="0dp"
@@ -18,21 +19,23 @@
             tools:layout_editor_absoluteX="10dp"
             tools:layout_editor_absoluteY="9dp">
 
-            <TextView
-                android:id="@+id/textviewPais"
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="50dp"
-                android:layout_marginTop="20dp"
-                android:gravity="center_horizontal"
-                android:textStyle="bold"
-                android:textSize="30dp" />
+                android:gravity="center">
+                <ImageView
+                    android:id="@+id/imageView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="136dp"
+                    app:srcCompat="@mipmap/logo720x360"
+                    android:layout_gravity="center"/>
+            </LinearLayout>
             <SeekBar
                 android:id="@+id/seekBarRecepcao"
                 style="@style/Widget.AppCompat.SeekBar.Discrete"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:max="100"
+                android:max="10"
                 android:progress="0"/>
             <LinearLayout
                 android:layout_width="match_parent"
@@ -52,7 +55,16 @@
                     android:text="0/10"
                     android:textSize="@dimen/size_info_radios"
                     android:textStyle="bold" />
+
+                <CheckBox
+                    android:id="@+id/checkBoxRecepcao"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text=" + 0.5" />
+
+
             </LinearLayout>
+
             <SeekBar
                 android:id="@+id/seekBarUtilizacao"
                 style="@style/Widget.AppCompat.SeekBar.Discrete"
@@ -79,6 +91,11 @@
                     android:text="0/10"
                     android:textSize="@dimen/size_info_radios"
                     android:textStyle="bold" />
+                <CheckBox
+                    android:id="@+id/checkBoxUtilizacao"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text=" + 0.5" />
             </LinearLayout>
             <SeekBar
                 android:id="@+id/seekBarComida"
@@ -107,6 +124,11 @@
                     android:text="0/10"
                     android:textSize="@dimen/size_info_radios"
                     android:textStyle="bold" />
+                <CheckBox
+                    android:id="@+id/checkBoxComida"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text=" + 0.5" />
             </LinearLayout>
             <SeekBar
                 android:id="@+id/seekBarFluencia"
@@ -136,6 +158,11 @@
                     android:text="0/10"
                     android:textSize="@dimen/size_info_radios"
                     android:textStyle="bold" />
+                <CheckBox
+                    android:id="@+id/checkBoxFluencia"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text=" + 0.5" />
             </LinearLayout>
             <SeekBar
                 android:id="@+id/seekBarInformacoes"
@@ -163,6 +190,11 @@
                     android:text="0/10"
                     android:textSize="@dimen/size_info_radios"
                     android:textStyle="bold" />
+                <CheckBox
+                    android:id="@+id/checkBoxInformacoes"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text=" + 0.5" />
             </LinearLayout>
             <SeekBar
                 android:id="@+id/seekBarProducao"
@@ -190,6 +222,11 @@
                     android:text="0/10"
                     android:textSize="@dimen/size_info_radios"
                     android:textStyle="bold" />
+                <CheckBox
+                    android:id="@+id/checkBoxProducao"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text=" + 0.5" />
             </LinearLayout>
 
             <SeekBar
@@ -218,6 +255,11 @@
                     android:text="0/10"
                     android:textSize="@dimen/size_info_radios"
                     android:textStyle="bold" />
+                <CheckBox
+                    android:id="@+id/checkBoxJogos"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text=" + 0.5" />
             </LinearLayout>
 
             <SeekBar
@@ -246,6 +288,11 @@
                     android:text="0/10"
                     android:textSize="@dimen/size_info_radios"
                     android:textStyle="bold" />
+                <CheckBox
+                    android:id="@+id/checkBoxCriatividade"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text=" + 0.5" />
             </LinearLayout>
 
             <SeekBar
@@ -274,13 +321,20 @@
                     android:text="0/10"
                     android:textSize="@dimen/size_info_radios"
                     android:textStyle="bold" />
+                <CheckBox
+                    android:id="@+id/checkBoxOrganizacao"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text=" + 0.5" />
             </LinearLayout>
             <Button
                 android:id="@+id/btnSalvar"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Salvar"
-                android:layout_marginTop="@dimen/activity_entre_radios"/>
+                android:layout_marginTop="@dimen/activity_entre_radios"
+                android:background="@color/green"
+                android:textStyle="bold"/>
         </LinearLayout>
     </ScrollView>
 

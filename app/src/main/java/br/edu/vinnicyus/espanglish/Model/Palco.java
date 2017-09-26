@@ -27,7 +27,8 @@ public class Palco extends Model{
     private int apresentacao_cultural;
     @Column(name = "uso_tempo")
     private int uso_tempo;
-
+    @Column(name = "checkbox")
+    private CheckBoxPalco checkbox;
     //1 - enviado, 2 - não enviado
     @Column(name = "status_envio")
     private int status_envio;
@@ -86,6 +87,14 @@ public class Palco extends Model{
 
     public void setUso_tempo(int uso_tempo) {
         this.uso_tempo = uso_tempo;
+    }
+
+    public CheckBoxPalco getCheckbox() {
+        return checkbox;
+    }
+
+    public void setCheckbox(CheckBoxPalco checkbox) {
+        this.checkbox = checkbox;
     }
 
     public int getStatus_envio() {

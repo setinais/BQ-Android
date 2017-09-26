@@ -33,6 +33,8 @@ public class Barraca extends Model{
     private int criatividade;
     @Column(name = "organizacao")
     private int organizacao;
+    @Column(name = "checkbox")
+    private CheckBoxBarraca checkBox;
     //1 - enviado, 2 - não enviado
     @Column(name = "status_envio")
     private int status_envio;
@@ -115,6 +117,14 @@ public class Barraca extends Model{
 
     public void setOrganizacao(int organizacao) {
         this.organizacao = organizacao;
+    }
+
+    public CheckBoxBarraca getCheckBox() {
+        return checkBox;
+    }
+
+    public void setCheckBox(CheckBoxBarraca checkBox) {
+        this.checkBox = checkBox;
     }
 
     public int getStatus_envio() {

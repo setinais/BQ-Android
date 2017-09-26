@@ -26,7 +26,7 @@
             android:value="1" />
         <meta-data
             android:name="AA_MODELS"
-            android:value="                         br.edu.vinnicyus.espanglish.Model.Jurado,                         br.edu.vinnicyus.espanglish.Model.ConfigsApp,                         br.edu.vinnicyus.espanglish.Model.Pais,                         br.edu.vinnicyus.espanglish.Model.Palco,                         br.edu.vinnicyus.espanglish.Model.Barraca                             " />
+            android:value="                         br.edu.vinnicyus.espanglish.Model.Jurado,                         br.edu.vinnicyus.espanglish.Model.ConfigsApp,                         br.edu.vinnicyus.espanglish.Model.Pais,                         br.edu.vinnicyus.espanglish.Model.Palco,                         br.edu.vinnicyus.espanglish.Model.Barraca, br.edu.vinnicyus.espanglish.Model.CheckBoxBarraca, br.edu.vinnicyus.espanglish.Model.CheckBoxPalco                             " />
 
         <activity android:name=".LoginActivity" android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>

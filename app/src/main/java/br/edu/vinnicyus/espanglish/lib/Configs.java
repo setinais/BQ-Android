@@ -23,8 +23,7 @@ public class Configs {
                     {"Inglaterra","6","Ingles"},
                     {"Nova Zelândia","7","Ingles"},
                     {"Jamaica","8","Ingles"},
-                    {"Irlanda","9","Ingles"},
-                    {"África do Sul","10","Ingles"}
+                    {"África do Sul","9","Ingles"}
             };
     public static Configs getConfigs()
     {
