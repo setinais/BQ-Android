@@ -105,7 +105,7 @@ public class BarracaActivity extends AppCompatActivity {
                 imageViewPais.setImageResource(R.mipmap.africadosul32);
                 break;
             default:
-                imageViewPais.setImageResource(R.mipmap.logo720x360);
+                imageViewPais.setImageResource(R.mipmap.vespanglish);
                 break;
         }
 

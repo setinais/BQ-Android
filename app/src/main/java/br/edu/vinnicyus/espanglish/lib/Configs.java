@@ -11,7 +11,9 @@ public class Configs {
     public String[][] jurados =
             {
                     {"vinnicyus","02286373175","Espanhol"},
-                    {"iblayr","05053855110","Ingles"}
+                    {"iblayr","05053855110","Ingles"},
+                    {"guida","123","Ingles"},
+                    {"pinga","56","Ingles"}
             };
     public String[][] paises =
             {
@@ -23,7 +25,7 @@ public class Configs {
                     {"Inglaterra","6","Ingles"},
                     {"Nova Zelândia","7","Ingles"},
                     {"Jamaica","8","Ingles"},
-                    {"África do Sul","9","Ingles"}
+                    {"África do Sul","10","Ingles"}
             };
     public static Configs getConfigs()
     {

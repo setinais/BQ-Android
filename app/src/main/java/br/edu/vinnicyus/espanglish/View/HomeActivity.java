@@ -131,7 +131,7 @@ public class HomeActivity extends AppCompatActivity {
             setTitleToobar[2][1] = "Nova Zelândia";
             setTitleToobar[3][0] = Integer.toString(radio4.getId()) ;
             setTitleToobar[3][1] = "Jamaica";
-            setTitleToobar[4][0] = Integer.toString(radio3.getId()) ;
+            setTitleToobar[4][0] = Integer.toString(radio5.getId()) ;
             setTitleToobar[4][1] = "África do Sul";
 
         }
@@ -178,6 +178,14 @@ public class HomeActivity extends AppCompatActivity {
                 }
                 else
                 {
+                    List<Barraca> all_barraca = Barraca.getAll();
+                    List<Palco> all_palco = Palco.getAll();
+                    if (all_palco.isEmpty() && all_barraca.isEmpty()) {
+                        mensagem("Nenhuma alteração feita!");
+                    } else {
+                        sendDados(all_barraca, all_palco);
+                    }
+
                     radio_selected_pais = (RadioButton) findViewById(id_p);
                     radio_selected_tipo = (RadioButton) findViewById(id_t);
 
@@ -205,7 +213,7 @@ public class HomeActivity extends AppCompatActivity {
 
     public void mensagem(String m)
     {
-        Toast.makeText(this, m, Toast.LENGTH_LONG).show();
+        Toast.makeText(this, m, Toast.LENGTH_SHORT).show();
     }
 
     private String soma(float n1,float n2)
@@ -247,7 +255,7 @@ public class HomeActivity extends AppCompatActivity {
 
         RequestQueue rq = Volley.newRequestQueue(this);
 
-        StringRequest request = new StringRequest(Request.Method.POST,"http://vinnilog.com.br/back/init.php", new Response.Listener<String>() {
+        StringRequest request = new StringRequest(Request.Method.POST,"http://192.168.1.106/espanglish/back/init.php", new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
                 if(!response.toString().equals("Error")) {
@@ -263,7 +271,7 @@ public class HomeActivity extends AppCompatActivity {
         }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
-                mensagem("Error de conexão! " + error.getLocalizedMessage());
+                mensagem("Error de conexão!");
 
             }
         }) {
