@@ -1,8 +1,6 @@
 package br.edu.vinnicyus.espanglish.Controller;
 
 
-import android.util.Log;
-
 import br.edu.vinnicyus.espanglish.Model.Barraca;
 import br.edu.vinnicyus.espanglish.Model.Palco;
 

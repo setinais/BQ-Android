@@ -11,7 +11,15 @@ public class Configs {
     public String[][] jurados =
             {
                     {"vinnicyus","02286373175","Espanhol"},
-                    {"iblayr","05053855110","Ingles"}
+                    {"iblayr","05053855110","Ingles"},
+                    {"jader","99100134104","Ingles"},
+                    {"jane","97108626691","Ingles"},
+                    {"lucelia","30980038120","Ingles"},
+                    {"poliana","71321101104","Ingles"},
+                    {"maria","93286368172","Espanhol"},
+                    {"itamara","40274322315","Espanhol"},
+                    {"danilo","99193710178","Espanhol"},
+                    {"luiza","60157550168","Espanhol"}
             };
     public String[][] paises =
             {
