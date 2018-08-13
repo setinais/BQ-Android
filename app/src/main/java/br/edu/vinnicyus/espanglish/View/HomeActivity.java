@@ -306,7 +306,7 @@ public class HomeActivity extends AppCompatActivity {
             List<Barraca> all_barraca = Barraca.getAll();
             List<Palco> all_palco = Palco.getAll();
             if (all_palco.isEmpty() && all_barraca.isEmpty()) {
-                mensagem("Nenhuma alteração feita!");
+                //mensagem("Nenhuma alteração feita!");
             } else {
                 menu.setActionView(R.layout.update);
                 sendDados(all_barraca, all_palco);
