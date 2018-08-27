@@ -81,8 +81,6 @@ public class HomeActivity extends AppCompatActivity {
         radio = (RadioButton) findViewById(R.id.radioButton);
         radio2 = (RadioButton) findViewById(R.id.radioButton2);
         radio3 = (RadioButton) findViewById(R.id.radioButton3);
-        radio4 = (RadioButton) findViewById(R.id.radioButton4);
-        radio5 = (RadioButton) findViewById(R.id.radioButton5);
 
         radio6 = (RadioButton) findViewById(R.id.radioButton6);
         radio7 = (RadioButton) findViewById(R.id.radioButton7);
@@ -97,42 +95,32 @@ public class HomeActivity extends AppCompatActivity {
         if(j.getLingua().equals("Espanhol"))
         {
             radio.setButtonDrawable(R.mipmap.espanha);
-            radio2.setButtonDrawable(R.mipmap.mexico32);
-            radio3.setButtonDrawable(R.mipmap.portorico32);
-            radio4.setButtonDrawable(R.mipmap.bolivia32);
-            radio5.setVisibility(View.INVISIBLE);
+            radio2.setButtonDrawable(R.mipmap.cuba32);
+            radio3.setButtonDrawable(R.mipmap.chile32);
 
-            setTitleToobar = new String[4][2];
+            setTitleToobar = new String[3][2];
 
             setTitleToobar[0][0] = Integer.toString(radio.getId()) ;
             setTitleToobar[0][1] = "Espanha";
             setTitleToobar[1][0] = Integer.toString(radio2.getId()) ;
-            setTitleToobar[1][1] = "México";
+            setTitleToobar[1][1] = "Cuba";
             setTitleToobar[2][0] = Integer.toString(radio3.getId()) ;
-            setTitleToobar[2][1] = "Porto Rico";
-            setTitleToobar[3][0] = Integer.toString(radio4.getId()) ;
-            setTitleToobar[3][1] = "Bolívia";
+            setTitleToobar[2][1] = "Chile";
         }
         else if(j.getLingua().equals("Ingles"))
         {
             radio.setButtonDrawable(R.mipmap.eua32);
             radio2.setButtonDrawable(R.mipmap.inglaterra32);
-            radio3.setButtonDrawable(R.mipmap.novazelandia32);
-            radio4.setButtonDrawable(R.mipmap.jamaica32);
-            radio5.setButtonDrawable(R.mipmap.africadosul32);
+            radio3.setButtonDrawable(R.mipmap.filipinas32);
 
-            setTitleToobar = new String[5][2];
+            setTitleToobar = new String[3][2];
 
             setTitleToobar[0][0] = Integer.toString(radio.getId()) ;
             setTitleToobar[0][1] = "EUA";
             setTitleToobar[1][0] = Integer.toString(radio2.getId()) ;
             setTitleToobar[1][1] = "Inglaterra";
             setTitleToobar[2][0] = Integer.toString(radio3.getId()) ;
-            setTitleToobar[2][1] = "Nova Zelândia";
-            setTitleToobar[3][0] = Integer.toString(radio4.getId()) ;
-            setTitleToobar[3][1] = "Jamaica";
-            setTitleToobar[4][0] = Integer.toString(radio5.getId()) ;
-            setTitleToobar[4][1] = "África do Sul";
+            setTitleToobar[2][1] = "Filipinas";
 
         }
         else
@@ -255,17 +243,16 @@ public class HomeActivity extends AppCompatActivity {
 
         RequestQueue rq = Volley.newRequestQueue(this);
 
-        StringRequest request = new StringRequest(Request.Method.POST,"http://192.168.1.106/espanglish/back/init.php", new Response.Listener<String>() {
+        StringRequest request = new StringRequest(Request.Method.POST,"http://10.1.1.8:8000/api/jurado", new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
                 if(!response.toString().equals("Error")) {
                     WebService ws = new WebService(response.toString());
                     ws.tratramentoDados();
-                    mensagem("Salvo com suceesso!");
                 }
                 else
                 {
-                    mensagem("Error na busca dos dados!");
+                    mensagem(response.toString());
                 }
             }
         }, new Response.ErrorListener() {
@@ -306,7 +293,7 @@ public class HomeActivity extends AppCompatActivity {
             List<Barraca> all_barraca = Barraca.getAll();
             List<Palco> all_palco = Palco.getAll();
             if (all_palco.isEmpty() && all_barraca.isEmpty()) {
-                //mensagem("Nenhuma alteração feita!");
+                mensagem("Nenhuma alteração feita!");
             } else {
                 menu.setActionView(R.layout.update);
                 sendDados(all_barraca, all_palco);
@@ -314,6 +301,7 @@ public class HomeActivity extends AppCompatActivity {
                     public void run() {
                         try {
                             Thread.sleep(2000);
+                            mensagem("Salvo com sucesso!");
                         } catch (InterruptedException e) {
                             e.printStackTrace();
                         }
@@ -327,7 +315,6 @@ public class HomeActivity extends AppCompatActivity {
                         });
                     }
                 }.start();
-
             }
     }
 }

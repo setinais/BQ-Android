@@ -71,7 +71,7 @@ public class BarracaActivity extends AppCompatActivity {
         pais = dados.getString("pais");
         jurado = dados.getString("jurado");
 
-        getSupportActionBar().setTitle("Avaliação Barraca -> "+pais);
+        getSupportActionBar().setTitle("Barraca -> "+pais);
 
         imageViewPais = (ImageView) findViewById(R.id.imageView);
 
@@ -80,29 +80,20 @@ public class BarracaActivity extends AppCompatActivity {
             case "Espanha":
                 imageViewPais.setImageResource(R.mipmap.espanha);
                 break;
-            case "México":
-                imageViewPais.setImageResource(R.mipmap.mexico32);
-                break;
-            case "Porto Rico":
-                imageViewPais.setImageResource(R.mipmap.portorico32);
-                break;
-            case "Bolívia":
-                imageViewPais.setImageResource(R.mipmap.bolivia32);
-                break;
             case "EUA":
                 imageViewPais.setImageResource(R.mipmap.eua32);
                 break;
             case "Inglaterra":
                 imageViewPais.setImageResource(R.mipmap.inglaterra32);
                 break;
-            case "Nova Zelândia":
-                imageViewPais.setImageResource(R.mipmap.novazelandia32);
+            case "Cuba":
+                imageViewPais.setImageResource(R.mipmap.cuba32);
                 break;
-            case "Jamaica":
-                imageViewPais.setImageResource(R.mipmap.jamaica32);
+            case "Chile":
+                imageViewPais.setImageResource(R.mipmap.chile32);
                 break;
-            case "África do Sul":
-                imageViewPais.setImageResource(R.mipmap.africadosul32);
+            case "Filipinas":
+                imageViewPais.setImageResource(R.mipmap.filipinas32);
                 break;
             default:
                 imageViewPais.setImageResource(R.mipmap.vespanglish);

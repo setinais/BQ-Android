@@ -77,7 +77,7 @@ public class LoginActivity extends AppCompatActivity{
         dialog.setCancelable(true);
         dialog.show();
 
-        String login = nome.getText().toString().toLowerCase();
+        String login = nome.getText().toString();
         String senha = password.getText().toString();
 
         LoginValidator isValid = new LoginValidator();

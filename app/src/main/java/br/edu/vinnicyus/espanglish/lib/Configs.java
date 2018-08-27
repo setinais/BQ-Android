@@ -10,20 +10,24 @@ public class Configs {
 
     public String[][] jurados =
             {
-                    {"vinnicyus","02286373175","Espanhol"},
-                    {"iblayr","05053855110","Ingles"}
+                    {"Divone","20181","Ingles"},
+                    {"Flavia","20182","Ingles"},
+                    {"Leandro","20183","Ingles"},
+                    {"Lucelia","20184","Ingles"},
+
+                    {"Pedro","20185","Espanhol"},
+                    {"Jhennefer","20186","Espanhol"},
+                    {"Danilo","20187","Espanhol"},
+                    {"Itamara","20188","Espanhol"},
             };
     public String[][] paises =
             {
-                    {"África do Sul","1","Ingles"},
-                    {"Bolívia","2","Espanhol"},
-                    {"Espanha","3","Espanhol"},
-                    {"EUA","4","Ingles"},
-                    {"Inglaterra","5","Ingles"},
-                    {"Jamaica","6","Ingles"},
-                    {"México","7","Espanhol"},
-                    {"Nova Zelândia","8","Ingles"},
-                    {"Porto Rico","9","Espanhol"}
+                    {"Chile","181","Espanhol"},
+                    {"Cuba","182","Espanhol"},
+                    {"Espanha","183","Espanhol"},
+                    {"EUA","184","Ingles"},
+                    {"Inglaterra","185","Ingles"},
+                    {"Filipinas","186","Ingles"},
             };
     public static Configs getConfigs()
     {
